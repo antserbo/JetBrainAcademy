@@ -4,12 +4,6 @@ initial_game_field = '_________'
 
 inputs = [x for x in initial_game_field]
 
-'''
-Take a look closer @X wins/@O wins, somehow we can make the block smaller smaller
-row_pos = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]
-game_rows = [''.join(cells[i] for i in pos) for pos in row_pos]
-'''
-
 state = ''
 
 
@@ -72,9 +66,6 @@ def game_logic(play_field):  # clean-up the logic into more friendly solution
     x_diagonal_win = diagonal_1.count('X') == 3 or diagonal_2.count('X') == 3
     o_diagonal_win = diagonal_1.count('O') == 3 or diagonal_2.count('O') == 3
 
-    # if (abs(game_fields.count('X') - game_fields.count('O')) > 1) or (x_row_win and o_row_win) or \
-    # (x_column_win and o_column_win):
-    # print('Impossible')
     if x_row_win or x_column_win or diagonal_1.count('X') == 3 or diagonal_2.count('X') == 3:
         print('X wins')
         a_state += 'win'
@@ -94,44 +85,3 @@ print_grid()
 
 while state == '':
     check_and_change()
-
-
-
-'''
-    row_1 = play_field[0:3]
-    row_2 = play_field[3:6]
-    row_3 = play_field[6:9]
-    vertical_1 = play_field[0] + play_field[3] + play_field[6]
-    vertical_2 = play_field[1] + play_field[4] + play_field[7]
-    vertical_3 = play_field[2] + play_field[5] + play_field[8]
-    diagonal_1 = play_field[0] + play_field[4] + play_field[8]
-    diagonal_2 = play_field[2] + play_field[4] + play_field[6]
-
-    x_row_win = row_1.count('X') == 3 or row_2.count('X') == 3 or row_3.count('X') == 3
-    o_row_win = row_1.count('O') == 3 or row_2.count('O') == 3 or row_3.count('O') == 3
-
-    x_column_win = vertical_1.count('X') == 3 or vertical_2.count('X') == 3 or vertical_3.count('X') == 3
-    o_column_win = vertical_1.count('O') == 3 or vertical_2.count('O') == 3 or vertical_3.count('O') == 3
-
-    x_diagonal_win = diagonal_1.count('X') == 3 or diagonal_2.count('X') == 3
-    o_diagonal_win = diagonal_1.count('O') == 3 or diagonal_2.count('O') == 3
-
-    # if (abs(game_fields.count('X') - game_fields.count('O')) > 1) or (x_row_win and o_row_win) or \
-    # (x_column_win and o_column_win):
-    # print('Impossible')
-    if x_row_win or x_column_win or diagonal_1.count('X') == 3 or diagonal_2.count('X') == 3:
-        print('X wins')
-        a_state += 'win'
-    elif o_row_win or o_column_win or diagonal_1.count('O') == 3 or diagonal_2.count('O') == 3:
-        print('O wins')
-        a_state += 'win'
-    else:
-        if '_' in play_field:
-            pass
-        else:
-            print('Draw')
-            a_state += 'win'
-    return a_state
-
-
-'''
